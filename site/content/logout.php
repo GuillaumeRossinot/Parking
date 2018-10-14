@@ -1,14 +1,15 @@
 <?php
 	session_start();
 	session_destroy();
-	header("location:index.php");
+	header("location:?p=accueil");
+	exit();
 
 
-if (isset ($_COOKIE['pseudo']))
+if (isset ($_COOKIE['email']))
 
 {
 
-setcookie('pseudo', '', -1);
+setcookie('email', '', -1);
 
 }
 

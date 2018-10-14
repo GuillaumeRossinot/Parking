@@ -21,8 +21,9 @@
 				if(isset ($_SESSION ['connecte']))
 				{
 				//print_r($_SESSION['lvl']);
-				$requete = $bdd->query("SELECT lvl FROM user ");
-				$reponse = 	$requete->fetch();{
+				$id_u = $_SESSION['id_u'];
+				$requete = $bdd->query("SELECT lvl FROM user WHERE id_u = '$id_u'");
+				$reponse = 	$requete->fetch();
 				$lvl = $reponse['lvl'];
 				//print_r($lvl);
 				?>
@@ -49,7 +50,22 @@
 			if(isset ($_SESSION ['connecte']))// si connecter affiche deconnexion
 				{
 				//print_r($_SESSION);
+				//print_r($id_u);
+				//print_r($lvl);
+					if($lvl == 3)// si admin affiche Administration
+					{
+					//print_r($_SESSION);
+						?>
+						<li>
+						  <a class="nav-link disabled" href="?p=admin">Administration</a>
+						</li>
+						<?php
+					}
+				
 			?>
+			<li>
+			  <a class="nav-link disabled" href="?p=moncompte">Mon Compte</a>
+			</li>
 			<li>
 			  <a class="nav-link disabled" href="?p=logout">Deconnexion</a>
 			</li>
@@ -63,17 +79,6 @@
             </li>
 			<?php
 				}
-				if($lvl = 3)// si connecter affiche deconnexion
-				{
-				//print_r($_SESSION);
-			?>
-			<li>
-			  <a class="nav-link disabled" href="?p=admin">Administration</a>
-			</li>
-			<?php
-				}
-				
-			}
 			?>
           </ul>
  </header>
@@ -100,9 +105,6 @@
         </li>
         <li>
           <a class="nav-link disabled" href="?p=contact">Contact</a>
-        </li>
-        <li>
-          <a class="nav-link disabled" href="?p=login">Connection / </a> <a class="nav-link disabled" href="?p=register"> Inscription </a>
         </li>
     </ul>
 	  <!-- Ecrire tout le footer içi-->

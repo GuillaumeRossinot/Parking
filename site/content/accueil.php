@@ -8,7 +8,8 @@
 <?php 
 				if(isset ($_SESSION ['connecte']))	// Si l'utilisateur est connecté affiche :
 				{
-				$requete = $bdd->query("SELECT nom, prenom FROM user ");
+				$id_u = $_SESSION['id_u'];
+				$requete = $bdd->query("SELECT nom, prenom FROM user WHERE id_u = '$id_u'");
 				$reponse = 	$requete->fetch();{
 				$nom = $reponse['nom'];
 				$prenom = $reponse['prenom'];
