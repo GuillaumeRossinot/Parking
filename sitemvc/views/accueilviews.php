@@ -11,6 +11,9 @@
               echo "Bienvenue ", $nom," ", $prenom ," !<br>";
               echo "Pour reserver une place rendez vous <a href='?p=reservation'>içi</a>.<br>";
               echo "Pour voir votre place dans la file d'attente rendez vous <a href='?p=attente'>içi</a>.<br>";
+                if($lvl = 3){
+                    echo "Panneau administrateur : <a href='?p=admin'>içi</a>.<br>";
+                }
               }
               else {
                 echo "<h1> Accueil </h1> <br>";
