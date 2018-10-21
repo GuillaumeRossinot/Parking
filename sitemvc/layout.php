@@ -1,20 +1,16 @@
 <?php
-
-// TO REMOVE
-require("model/model.php");
-// TO REMOVE
-
+//require("model/model.php");
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./views/CSS/style.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="views/CSS/style.css" media="all"/>
 </head>
 <header>
 <title>Site parking</title>
  <!--Header-->
  			<!-- Banniere -->
-   
+
  <!-- <img src="./Images/banniere.png" > -->
 
   <!-- Ecrire tout le header içi-->
@@ -23,14 +19,13 @@ require("model/model.php");
             <li>
               <a class="nav-link" href="?p=accueil">Accueil</a>
             </li>
-				<?php 
+				<?php
 				if(isset ($_SESSION ['connecte']))
 				{
 				//print_r($_SESSION['lvl']);
 				$id_u = $_SESSION['id_u'];
-				$requete = $bdd->query("SELECT lvl FROM user WHERE id_u = '$id_u'");
-				$reponse = 	$requete->fetch();
-				$lvl = $reponse['lvl'];
+				$lvl = $_SESSION['lvl'];
+          if($lvl != 0){
 				//print_r($lvl);
 				?>
 				<!-- si l'utilisateur est connecter affiche les pages -->
@@ -41,6 +36,7 @@ require("model/model.php");
               <a class="nav-link disabled" href="?p=attente">Attente</a>
             </li>
 				<?php
+            }
 				}
 				?>
              <li>
@@ -52,10 +48,10 @@ require("model/model.php");
             <li>
               <a class="nav-link disabled" href="?p=contact">Contact</a>
             </li>
-			<?php 
+			<?php
 			if(isset ($_SESSION ['connecte']))// si connecter affiche deconnexion
 				{
-				print_r($_SESSION);
+				//print_r($_SESSION);
 				//print_r($id_u);
 				//print_r($lvl);
 					if($lvl == 3)// si admin affiche Administration
@@ -67,7 +63,7 @@ require("model/model.php");
 						</li>
 						<?php
 					}
-				
+
 			?>
 			<li>
 			  <a class="nav-link disabled" href="?p=moncompte">Mon Compte</a>
@@ -78,7 +74,7 @@ require("model/model.php");
 			<?php
 				}
 				else //ou si pas connecter connexion / inscription
-				{ 
+				{
 			?>
             <li>
               <a class="nav-link disabled" href="?p=login">Connexion / </a> <a class="nav-link disabled" href="?p=register"> Inscription </a>
@@ -90,13 +86,13 @@ require("model/model.php");
           </ul>
 
  </header>
-  
+
 
   <body>
    <!--ne pas modifier cette partie-->
 	<?= $content ?>
   </body>
- 
+
 <footer>
   			<!-- footer -->
 <h3> footer </h3>

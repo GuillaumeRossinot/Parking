@@ -1,9 +1,11 @@
 <?php
 require dirname(__FILE__).'/../controllers/logincontrollers.php';
 ?>
-<div class="login">
     <h2>Login</h2>
-    <form action="/sitemvc/?p=login" method="post">
+
+<div class="login">
+
+    <form action="<?php dirname(__FILE__).'/?p=login' ?>" method="post">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email"/><br />
         <label for="mdp">Mdp:</label>

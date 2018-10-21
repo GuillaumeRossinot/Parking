@@ -9,10 +9,10 @@ function getUserIFExists()
     {
             $email = $_POST['email'];
             $mdp = sha1($_POST['mdp']);
-            
+
             //echo "SELECT id_u, email FROM user WHERE email = '".$email."' AND password = '".$mdp."'";
             //var_dump($bdd);
-            
+
             $requete = $bdd->query("SELECT * FROM user WHERE email = '$email' AND password = '$mdp'");
 
             if($reponse = $requete->fetch())
@@ -22,14 +22,15 @@ function getUserIFExists()
                 header("Location:?p=accueil");
                 return $reponse;
             }
-            else 
+
+            else
             {
 
-                 echo "Mauvais Identifiants.";  
+                 echo "Mauvais Identifiants. <br>";
 
             }
-                
-            
+
+
     }
 
     if (isset($_POST['souvenir'])) // ajout d'un cookie de connexion si l'utilisateur coche se souvenir
@@ -38,7 +39,7 @@ function getUserIFExists()
 
     $expire = time() + 365*24*3600;
 
-    setcookie('email', $_SESSION['email'], $expire); 
+    setcookie('email', $_SESSION['email'], $expire);
 
     }
 }
