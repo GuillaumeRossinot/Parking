@@ -1,14 +1,16 @@
+<?php
+//require("model/model.php");
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./CSS/style.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="views/CSS/style.css" media="all"/>
 </head>
-
 <header>
-<title>Site parking</title>
+<title><?php echo $title;?></title>
  <!--Header-->
  			<!-- Banniere -->
-   
+
  <!-- <img src="./Images/banniere.png" > -->
 
   <!-- Ecrire tout le header içi-->
@@ -17,14 +19,13 @@
             <li>
               <a class="nav-link" href="?p=accueil">Accueil</a>
             </li>
-				<?php 
+				<?php
 				if(isset ($_SESSION ['connecte']))
 				{
 				//print_r($_SESSION['lvl']);
 				$id_u = $_SESSION['id_u'];
-				$requete = $bdd->query("SELECT lvl FROM user WHERE id_u = '$id_u'");
-				$reponse = 	$requete->fetch();
-				$lvl = $reponse['lvl'];
+				$lvl = $_SESSION['lvl'];
+          if($lvl > 0){
 				//print_r($lvl);
 				?>
 				<!-- si l'utilisateur est connecter affiche les pages -->
@@ -35,6 +36,7 @@
               <a class="nav-link disabled" href="?p=attente">Attente</a>
             </li>
 				<?php
+            }
 				}
 				?>
              <li>
@@ -46,7 +48,7 @@
             <li>
               <a class="nav-link disabled" href="?p=contact">Contact</a>
             </li>
-			<?php 
+			<?php
 			if(isset ($_SESSION ['connecte']))// si connecter affiche deconnexion
 				{
 				//print_r($_SESSION);
@@ -61,7 +63,7 @@
 						</li>
 						<?php
 					}
-				
+
 			?>
 			<li>
 			  <a class="nav-link disabled" href="?p=moncompte">Mon Compte</a>
@@ -72,28 +74,30 @@
 			<?php
 				}
 				else //ou si pas connecter connexion / inscription
-				{ 
+				{
 			?>
             <li>
               <a class="nav-link disabled" href="?p=login">Connexion / </a> <a class="nav-link disabled" href="?p=register"> Inscription </a>
             </li>
 			<?php
 				}
+				//echo"$content";
 			?>
           </ul>
+
  </header>
-  
+
 
   <body>
    <!--ne pas modifier cette partie-->
-  <?= $content; ?>
+	<?= $content ?>
   </body>
- 
+
 <footer>
   			<!-- footer -->
 <h3> footer </h3>
 	<h4>Pages du site</h4>
-	<ul class="basdepage">
+	<ul id="menufooter">
         <li>
           <a class="nav-link" href="?p=accueil">Accueil</a>
         </li>
